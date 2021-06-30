@@ -3,7 +3,7 @@ package bg.softuni.musicdb.model.binding;
 public class UserRegistrationBindingModel {
 
     private String username;
-    private String fullname;
+    private String fullName;
     private String email;
     private String password;
     private String confirmPassword;
@@ -17,12 +17,12 @@ public class UserRegistrationBindingModel {
         return this;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public UserRegistrationBindingModel setFullname(String fullname) {
-        this.fullname = fullname;
+    public UserRegistrationBindingModel setFullName(String fullName) {
+        this.fullName = fullName;
         return this;
     }
 

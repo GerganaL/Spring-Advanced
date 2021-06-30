@@ -3,7 +3,7 @@ package bg.softuni.musicdb.model.service;
 public class UserRegistrationServiceModel {
 
     private String username;
-    private String fullname;
+    private String fullName;
     private String email;
     private String password;
 
@@ -17,12 +17,12 @@ public class UserRegistrationServiceModel {
         return this;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public UserRegistrationServiceModel setFullname(String fullname) {
-        this.fullname = fullname;
+    public UserRegistrationServiceModel setFullName(String fullName) {
+        this.fullName = fullName;
         return this;
     }
 
