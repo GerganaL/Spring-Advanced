@@ -44,24 +44,35 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerAndLoginUser(@Valid UserRegistrationBindingModel registrationBindingModel,
-                                       BindingResult bindingResult, RedirectAttributes redirectAttributes){
+    public String registerAndLoginUser(
+            @Valid UserRegistrationBindingModel registrationBindingModel,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes) {
 
-        if(bindingResult.hasErrors()){
-            redirectAttributes.addFlashAttribute("registrationBindingModel",registrationBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registrationBindingModel",bindingResult);
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("registrationBindingModel", registrationBindingModel);
+            redirectAttributes.addFlashAttribute(
+                    "org.springframework.validation.BindingResult.registrationBindingModel", bindingResult);
 
             return "redirect:/users/register";
         }
 
-        UserRegistrationServiceModel userServiceModel = modelMapper.map(registrationBindingModel, UserRegistrationServiceModel.class);
+        if (userService.usernameExists(registrationBindingModel.getUsername())) {
+            redirectAttributes.addFlashAttribute("registrationBindingModel", registrationBindingModel);
+            redirectAttributes.addFlashAttribute("userExistsError", true);
+
+            return "redirect:/users/register";
+        }
+
+        UserRegistrationServiceModel userServiceModel = modelMapper
+                .map(registrationBindingModel, UserRegistrationServiceModel.class);
 
         userService.registerAndLoginUser(userServiceModel);
 
         return "redirect:/home";
     }
 
-    //todo validate if user exist
+
 
     @PostMapping("/login-error")
     public ModelAndView failedLogin(
