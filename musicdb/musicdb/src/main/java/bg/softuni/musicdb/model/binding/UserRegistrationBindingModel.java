@@ -9,10 +9,10 @@ import javax.validation.constraints.*;
 )
 public class UserRegistrationBindingModel {
     @NotEmpty
-    @Min(3)
+    @Size(min = 3)
     private String username;
     @NotEmpty
-    @Min(3)
+    @Size(min = 3)
     private String fullName;
     @NotEmpty
     @Email

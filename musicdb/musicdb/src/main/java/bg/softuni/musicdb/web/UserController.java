@@ -61,6 +61,8 @@ public class UserController {
         return "redirect:/home";
     }
 
+    //todo validate if user exist
+
     @PostMapping("/login-error")
     public ModelAndView failedLogin(
             @ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
