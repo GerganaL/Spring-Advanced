@@ -35,7 +35,10 @@ public class UserController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        //todo... something very complex happens here
+
+        throw new NullPointerException();
+        //return "login";
     }
 
     @GetMapping("/register")
